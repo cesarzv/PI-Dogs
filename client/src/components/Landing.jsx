@@ -5,12 +5,12 @@ import s from './Landing.module.css';
 
 export default function Landing() {
   return (
-    <div className="landingImg">
+    <div className={s.landingImg}>
       <video autoPlay muted loop id="myVideo">
         <source src={Video} type="video/mp4"></source>
       </video>
       <Link to="/home">
-        <div className="landingBtn">Explore dogs!</div>
+        <div className={s.landingBtn}>Explore dogs!</div>
       </Link>
     </div>
   );

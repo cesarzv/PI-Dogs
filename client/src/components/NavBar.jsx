@@ -1,6 +1,9 @@
 import React from 'react';
 import s from './NavBar.module.css';
 import Image from '../img/logoNav2.png';
+import Image2 from '../img/create2.png';
+import { Link } from 'react-router-dom';
+
 import {
   filterDogsByTemperament,
   filterCreated,
@@ -10,10 +13,10 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getTemperaments } from '../actions';
+import SearchBar from './SearchBar';
 
 export default function NavBar({ setCurrentPage, setOrder }) {
   const dispatch = useDispatch();
-  //const [order, setOrder] = useState('');
 
   useEffect(() => {
     dispatch(getTemperaments());
@@ -46,7 +49,10 @@ export default function NavBar({ setCurrentPage, setOrder }) {
 
   return (
     <div className={s.navCont}>
-      <img className={s.logo} src={Image} alt="logoNav"></img>
+      <Link to="/creator">
+        <img className={s.logo} src={Image} alt="logoNav"></img>
+      </Link>
+      <img className={s.create} alt="" src={Image2}></img>
       <div className={s.selects}>
         <select onChange={(e) => handleFilterTemp(e)} className={s.select}>
           <option>Temperament:</option>
@@ -74,6 +80,7 @@ export default function NavBar({ setCurrentPage, setOrder }) {
           <option value="wDesc">Weight (desc)</option>
         </select>
       </div>
+      <SearchBar setCurrentPage={setCurrentPage} />
     </div>
   );
 }

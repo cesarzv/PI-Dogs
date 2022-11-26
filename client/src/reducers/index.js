@@ -2,6 +2,7 @@ const initialState = {
   dogs: [],
   copyDogs: [],
   temperaments: [],
+  details: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -11,6 +12,25 @@ function rootReducer(state = initialState, action) {
         ...state,
         dogs: action.payload,
         copyDogs: action.payload,
+      };
+    case 'GET_DOG_NAME':
+      return {
+        ...state,
+        dogs: action.payload,
+      };
+    case 'POST_DOG':
+      return {
+        ...state,
+      };
+    case 'CLEAN_DOG':
+      return {
+        ...state,
+        details: [],
+      };
+    case 'GET_DETAILS':
+      return {
+        ...state,
+        details: action.payload,
       };
     case 'GET_TEMPERAMENTS':
       return {
@@ -41,23 +61,36 @@ function rootReducer(state = initialState, action) {
       const sortDogs =
         action.payload === 'asc'
           ? state.copyDogs.sort((a, b) => {
-              if (a.name < b.name) {
-                return -1; //indica que a.name va antes que b.name
-              }
-              if (a.name > b.name) {
-                return 1; //indica que a.name va despues que b.name
-              }
-              return 0; // indica que ambos son iguales y no cambian de lugar
+              let prim = a.name[0].toUpperCase() + a.name.slice(1);
+              let seg = b.name[0].toUpperCase() + b.name.slice(1);
+              if (prim > seg) return 1;
+              if (prim < seg) return -1;
+              return 0;
             })
-          : state.copyDogs.sort((a, b) => {
-              if (a.name < b.name) {
-                return 1;
-              }
-              if (a.name > b.name) {
-                return -1;
-              }
+          : //   if (a.name < b.name) {
+            //     return -1; //indica que a.name va antes que b.name
+            //   }
+            //   if (a.name > b.name) {
+            //     return 1; //indica que a.name va despues que b.name
+            //   }
+            //   return 0; // indica que ambos son iguales y no cambian de lugar
+            // })
+            state.copyDogs.sort((a, b) => {
+              let prim = a.name[0].toUpperCase() + a.name.slice(1);
+              let seg = b.name[0].toUpperCase() + b.name.slice(1);
+              if (prim > seg) return -1;
+              if (prim < seg) return 1;
               return 0;
             });
+
+      //   if (a.name < b.name) {
+      //     return 1;
+      //   }
+      //   if (a.name > b.name) {
+      //     return -1;
+      //   }
+      //   return 0;
+      // });
       return {
         ...state,
         dogs: sortDogs,
@@ -66,9 +99,14 @@ function rootReducer(state = initialState, action) {
       const sortWeight =
         action.payload === 'wAsc'
           ? state.copyDogs.sort((a, b) => {
-              console.log(state.copyDogs);
-              let pesoA = a.weight.metric.split(' - ')[0];
-              let pesoB = b.weight.metric.split(' - ')[0];
+              let pesoA =
+                typeof a.id === 'number'
+                  ? a.weight.metric.split(' - ')[0]
+                  : a.weight.split(' - ')[0];
+              let pesoB =
+                typeof b.id === 'number'
+                  ? b.weight.metric.split(' - ')[0]
+                  : b.weight.split(' - ')[0];
               if (isNaN(pesoA) || isNaN(pesoB)) {
                 return -1;
               }
@@ -81,8 +119,14 @@ function rootReducer(state = initialState, action) {
               return 0;
             })
           : state.copyDogs.sort((a, b) => {
-              let pesoA = a.weight.metric.split(' - ')[0];
-              let pesoB = b.weight.metric.split(' - ')[0];
+              let pesoA =
+                typeof a.id === 'number'
+                  ? a.weight.metric.split(' - ')[0]
+                  : a.weight.split(' - ')[0];
+              let pesoB =
+                typeof b.id === 'number'
+                  ? b.weight.metric.split(' - ')[0]
+                  : b.weight.split(' - ')[0];
               if (isNaN(pesoA) || isNaN(pesoB)) {
                 return -1;
               }

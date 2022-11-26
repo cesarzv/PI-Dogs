@@ -10,6 +10,23 @@ export function getDogs() {
   };
 }
 
+export function getDogName(name) {
+  return async function (dispatch) {
+    let response = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+    return dispatch({
+      type: 'GET_DOG_NAME',
+      payload: response.data,
+    });
+  };
+}
+
+export function postDog(payload) {
+  return async function () {
+    let response = await axios.post('http://localhost:3001/dogs', payload);
+    return response;
+  };
+}
+
 export function getTemperaments() {
   return async function (dispatch) {
     let response = await axios.get('http://localhost:3001/temperaments');
@@ -45,5 +62,21 @@ export function sortByWeight(payload) {
   return {
     type: 'SORT_BY_WEIGHT',
     payload,
+  };
+}
+
+export function cleanDog() {
+  return {
+    type: 'CLEAN_DOG',
+  };
+}
+
+export function getDetails(id) {
+  return async function (dispatch) {
+    let response = await axios.get(`http://localhost:3001/dogs/${id}`);
+    return dispatch({
+      type: 'GET_DETAILS',
+      payload: response.data,
+    });
   };
 }

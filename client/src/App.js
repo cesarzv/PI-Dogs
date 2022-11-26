@@ -5,6 +5,9 @@ import Home from './components/Home';
 import Landing from './components/Landing';
 import Creator from './components/Creator';
 import Details from './components/Details';
+// require('dotenv').config();
+import axios from 'axios';
+axios.defaults.baseURL = `${process.env.REACT_APP_API}`;
 
 function App() {
   return (

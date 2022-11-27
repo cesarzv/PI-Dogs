@@ -130,20 +130,25 @@
 .dText {
   position: absolute;
   height: 500px;
-  width: 700px;
+  width: 45%;
   left: 10px;
   top: 30px;
   color: white;
   padding-left: 40px;
+  flex-wrap: wrap;
 }
 
 .dText h2 {
-  font-size: 50px;
+  font-size: 60px;
   text-decoration: underline dashed rgba(58, 75, 231, 0.897);
+  position: absolute;
+  left: 10%;
 }
 
 .dText p {
   font-size: 23px;
   text-align: left;
   font-weight: bold;
+  position: relative;
+  top: 160px;
 }

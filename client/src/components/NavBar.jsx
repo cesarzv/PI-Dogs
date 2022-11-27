@@ -23,6 +23,7 @@ export default function NavBar({ setCurrentPage, setOrder }) {
   }, [dispatch]);
 
   const temperaments = useSelector((state) => state.temperaments);
+  console.log(temperaments);
 
   const handleFilterTemp = (e) => {
     e.preventDefault();

@@ -57,14 +57,13 @@ export default function NavBar({ setCurrentPage, setOrder }) {
         <select onChange={(e) => handleFilterTemp(e)} className={s.select}>
           <option>Temperament:</option>
           <option value="All">All</option>
-          {temperaments &&
-            temperaments.map((t) => {
-              return (
-                <option value={t.name} key={t.id}>
-                  {t.name}
-                </option>
-              );
-            })}
+          {temperaments?.map((t) => {
+            return (
+              <option value={t.name} key={t.id}>
+                {t.name}
+              </option>
+            );
+          })}
         </select>
         <select onChange={(e) => handleFilterCreated(e)} className={s.select}>
           <option>Creation:</option>

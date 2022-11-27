@@ -1,9 +1,10 @@
 .nav {
-  position: absolute;
+  /* position: absolute; */
   height: 50px;
   right: 120px;
   width: 400px;
   display: flex;
+  /* position: relative; */
 }
 
 .search {
@@ -11,12 +12,10 @@
   font-weight: bold;
   font-size: 17px;
   background-color: rgba(191, 221, 248, 0.541);
-  margin-right: 15px;
   height: 30px;
   border: 3px solid black;
   border-radius: 0.4em;
   box-shadow: 0.1em 0.1em;
-  position: absolute;
 }
 
 .search:hover {
@@ -34,7 +33,7 @@
   font-weight: bold;
   font-size: 17px;
   background-color: transparent;
-  margin-right: 15px;
+
   height: 45px;
   border: transparent;
   /* border: 3px solid black;
@@ -45,11 +44,13 @@
   align-items: center;
   height: 55px;
   width: 60px;
-  right: 135px;
-  position: absolute;
+  position: relative;
+
   cursor: pointer;
 }
 
 .lupa {
   width: 50px;
+  position: absolute;
+  right: 70px;
 }

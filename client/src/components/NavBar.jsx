@@ -50,10 +50,6 @@ export default function NavBar({ setCurrentPage, setOrder }) {
 
   return (
     <div className={s.navCont}>
-      <Link to="/creator">
-        <img className={s.logo} src={Image} alt="logoNav"></img>
-      </Link>
-      <img className={s.create} alt="" src={Image2}></img>
       <div className={s.selects}>
         <select onChange={(e) => handleFilterTemp(e)} className={s.select}>
           <option>Temperament:</option>
@@ -80,7 +76,15 @@ export default function NavBar({ setCurrentPage, setOrder }) {
           <option value="wDesc">Weight (desc)</option>
         </select>
       </div>
-      <SearchBar setCurrentPage={setCurrentPage} />
+      <div className={s.images}>
+        <Link to="/creator">
+          <img className={s.logo} src={Image} alt="logoNav"></img>
+        </Link>
+        <img className={s.create} alt="" src={Image2}></img>
+      </div>
+      <div className={s.searchBar}>
+        <SearchBar setCurrentPage={setCurrentPage} />
+      </div>
     </div>
   );
 }

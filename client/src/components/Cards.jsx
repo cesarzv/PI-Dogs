@@ -14,23 +14,22 @@ export default function Cards({ currentDogs }) {
   }, [dispatch]);
   return (
     <div className={s.cardsCont}>
-      {currentDogs &&
-        currentDogs.map((d) => {
-          return (
-            <Card
-              name={d.name}
-              //height={d.height.metric}
-              height={typeof d.id === 'number' ? d.height.metric : d.height}
-              //weight={d.weight.metric}
-              weight={typeof d.id === 'number' ? d.weight.metric : d.weight}
-              life_span={d.life_span}
-              image={d.image}
-              temperament={d.temperament}
-              key={d.id}
-              id={d.id}
-            />
-          );
-        })}
+      {currentDogs?.map((d) => {
+        return (
+          <Card
+            name={d.name}
+            //height={d.height.metric}
+            height={typeof d.id === 'number' ? d.height.metric : d.height}
+            //weight={d.weight.metric}
+            weight={typeof d.id === 'number' ? d.weight.metric : d.weight}
+            life_span={d.life_span}
+            image={d.image}
+            temperament={d.temperament}
+            key={d.id}
+            id={d.id}
+          />
+        );
+      })}
     </div>
   );
 }

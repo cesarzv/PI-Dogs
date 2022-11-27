@@ -11,18 +11,17 @@ export default function Paginated({ dogsPerPage, allDogs, paginated }) {
   return (
     <nav className={s.navCont}>
       <ul className={s.ulCont}>
-        {pageNumbers &&
-          pageNumbers.map((number) => {
-            return (
-              <li
-                onClick={() => paginated(number)}
-                className={s.numberList}
-                key={number}
-              >
-                <a className={s.number}>{number} </a>
-              </li>
-            );
-          })}
+        {pageNumbers?.map((number) => {
+          return (
+            <li
+              onClick={() => paginated(number)}
+              className={s.numberList}
+              key={number}
+            >
+              <a className={s.number}>{number} </a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

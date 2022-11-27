@@ -7,7 +7,8 @@ import Creator from './components/Creator';
 import Details from './components/Details';
 // require('dotenv').config();
 import axios from 'axios';
-axios.defaults.baseURL = process.env.REACT_APP_API;
+axios.defaults.baseURL = 'https://pi-dogs-production-2b15.up.railway.app/';
+console.log(process.env);
 
 function App() {
   return (

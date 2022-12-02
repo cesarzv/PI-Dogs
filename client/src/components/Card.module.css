@@ -67,8 +67,17 @@
   --border-width: 5px;
 }
 
-.img {
+.imgCont {
+  background-position: center;
+  background-size: cover;
+}
+
+.imgDog {
   border-radius: 15px 15px 0 0;
+  width: 337px;
+  height: 242px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .text {
@@ -95,4 +104,10 @@
   line-height: 27px;
   justify-content: center;
   font-weight: bold;
+}
+
+.temps {
+  width: 300px;
+  font-weight: bold;
+  padding-bottom: 10px;
 }

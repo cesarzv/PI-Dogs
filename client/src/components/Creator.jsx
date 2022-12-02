@@ -13,17 +13,12 @@ const validate = (input) => {
   if (!input.name) {
     errors.name = 'Se requiere un nombre';
   }
-  // if (
-  //   input.name[0] !== input.name[0].toUpperCase() ||
-  //   !/^[a-zA-Z]+$/.test(input.name)
-  // ) {
-  //   errors.name = 'La primera letra debe ser mayuscula';
-  // }
-  if (!/^[0-9]*$/.test(input.height)) {
-    errors.height = 'Height debe tener numeros';
+  // [0-9-]+$
+  if (!/[0-9-]+$/.test(input.height)) {
+    errors.height = 'Height debe tener numeros y un guion al medio';
   }
-  if (!/^[0-9]*$/.test(input.weight)) {
-    errors.weight = 'Weight debe tener numeros';
+  if (!/[0-9-]+$/.test(input.weight)) {
+    errors.weight = 'Weight debe tener numeros y un guion al medio';
   }
   if (!input.height) {
     errors.height = 'Se requiere un height';
@@ -33,9 +28,6 @@ const validate = (input) => {
   }
   if (!input.life_span) {
     errors.life_span = 'Se requiere un life span';
-  }
-  if (!input.image) {
-    errors.image = 'Se requiere una imagen';
   }
 
   return errors;
@@ -213,18 +205,17 @@ export default function Creator() {
             className={s.sub}
             type="submit"
             disabled={
-              errors.name || errors.height || errors.weight || errors.life_span
+              !input.name ||
+              errors.name ||
+              errors.height ||
+              errors.weight ||
+              errors.life_span
             }
           >
             Create
           </button>
         </div>
         <div className={s.gif1}>
-          {/* {errors.name && <p className={s.error}>{errors.name}</p>}
-          {errors.height && <p className={s.error}>{errors.height}</p>}
-          {errors.weight && <p className={s.error}>{errors.weight}</p>}
-          {errors.life_span && <p className={s.error}>{errors.life_span}</p>}
-          {errors.image && <p className={s.error}>{errors.image}</p>} */}
           <img src={gif1} alt="" width="400px"></img>
         </div>
         <div className={s.gif2}>

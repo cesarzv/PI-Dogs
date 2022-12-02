@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Card.module.css';
 import { NavLink } from 'react-router-dom';
+import random from '../img/randomDog.jpg';
 
 export default function Card({
   name,
@@ -15,13 +16,7 @@ export default function Card({
     <NavLink to={`/details/${id}`} style={{ textDecoration: 'none' }}>
       <div className={s.cardCont}>
         <div className={s.imgCont}>
-          <img
-            className={s.img}
-            src={image}
-            alt=""
-            width="350px"
-            height="250px"
-          ></img>
+          <img className={s.imgDog} src={image ? image : random} alt=""></img>
         </div>
         <div className={s.text}>
           <h2>{name}</h2>
@@ -29,10 +24,12 @@ export default function Card({
             <p>
               {height} cm <br />
               {weight} kg <br />
-              {life_span}
+              {life_span.includes('years') ? life_span : life_span + ' years'}
             </p>
           </div>
-          <h4>{temperament}</h4>
+          <div className={s.temps}>
+            <p>{temperament}</p>
+          </div>
         </div>
       </div>
     </NavLink>

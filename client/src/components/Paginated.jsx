@@ -1,7 +1,12 @@
 import React from 'react';
 import s from './Paginated.module.css';
 
-export default function Paginated({ dogsPerPage, allDogs, paginated }) {
+export default function Paginated({
+  dogsPerPage,
+  allDogs,
+  paginated,
+  currentPage,
+}) {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(allDogs / dogsPerPage); i++) {
@@ -15,7 +20,7 @@ export default function Paginated({ dogsPerPage, allDogs, paginated }) {
           return (
             <li
               onClick={() => paginated(number)}
-              className={s.numberList}
+              className={currentPage !== number ? s.numberList : s.current}
               key={number}
             >
               <a className={s.number}>{number} </a>

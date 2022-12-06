@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 import Paginated from './Paginated';
 
 export default function Home() {
-  // const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.dogs);
   const [order, setOrder] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,6 +23,7 @@ export default function Home() {
     <div className={s.homeCont}>
       <NavBar setCurrentPage={setCurrentPage} setOrder={setOrder} />
       <Paginated
+        currentPage={currentPage}
         dogsPerPage={dogsPerPage}
         allDogs={allDogs.length}
         paginated={paginated}
